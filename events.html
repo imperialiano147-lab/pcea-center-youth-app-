@@ -3,11 +3,64 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Events - PCEA CENTER YOUTH</title>
+  <title>Events</title>
+  <style>
+    body {
+      background-color: #add8e6;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    input, textarea {
+      margin: 5px;
+      padding: 8px;
+      width: 250px;
+    }
+    button {
+      margin: 5px;
+      padding: 8px 15px;
+      background-color: #004080;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+    .event {
+      background: white;
+      margin: 10px auto;
+      padding: 10px;
+      border-radius: 10px;
+      width: 80%;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+  </style>
 </head>
-<body style="background-color:#e6f0ff; text-align:center; font-family:Poppins;">
-  <h2 style="color:#1d4ed8; margin-top:30px;">Upcoming Youth Events</h2>
-  <p>Details about upcoming church and youth fellowship events will appear here.</p>
-  <a href="index.html">⬅ Back to Home</a>
+<body>
+  <h2>Upcoming Events</h2>
+  <input id="title" type="text" placeholder="Event title"><br>
+  <textarea id="details" placeholder="Event details"></textarea><br>
+  <button onclick="addEvent()">Post Event</button>
+  <div id="eventsList"></div>
+
+  <script>
+    const events = JSON.parse(localStorage.getItem('events') || '[]');
+    const list = document.getElementById('eventsList');
+    events.forEach(ev => render(ev));
+
+    function addEvent() {
+      const title = document.getElementById('title').value;
+      const details = document.getElementById('details').value;
+      if (!title || !details) return alert('Fill all fields!');
+      const ev = { title, details };
+      events.push(ev);
+      localStorage.setItem('events', JSON.stringify(events));
+      render(ev);
+    }
+
+    function render(ev) {
+      const div = document.createElement('div');
+      div.className = 'event';
+      div.innerHTML = `<h3>${ev.title}</h3><p>${ev.details}</p>`;
+      list.appendChild(div);
+    }
+  </script>
 </body>
 </html>
