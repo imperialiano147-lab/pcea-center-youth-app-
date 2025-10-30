@@ -3,17 +3,51 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Login | PCEA Center Youth</title>
-  <link rel="stylesheet" href="../style.css" />
-  <script defer src="../backend/auth.js"></script>
+  <title>PCEA Youth Login</title>
+  <style>
+    body { font-family: Arial; background: #007bff; color: white; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+    .form-container { background: rgba(0,0,0,0.3); padding: 2rem; border-radius: 10px; text-align: center; }
+    input { display: block; margin: 10px auto; padding: 10px; border-radius: 5px; border: none; width: 80%; }
+    button { padding: 10px 20px; border-radius: 5px; border: none; background: white; color: #007bff; cursor: pointer; }
+    button:hover { background: #e6e6e6; }
+    a { color: #ffe; text-decoration: underline; }
+  </style>
 </head>
 <body>
-  <main class="form-container">
-    <h2>Login</h2>
-    <input type="text" id="email" placeholder="Email" />
-    <input type="password" id="password" placeholder="Password" />
-    <button id="loginBtn">Login</button>
-    <p>Don't have an account? <a href="register.html">Register</a></p>
-  </main>
+
+<div class="form-container">
+  <h2>Login | PCEA Center Youth</h2>
+  <input type="text" id="email" placeholder="Email" />
+  <input type="password" id="password" placeholder="Password" />
+  <button id="loginBtn">Login</button>
+  <p>Don't have an account? <a href="#">Register</a></p>
+</div>
+
+<script>
+  // Simple login simulation using localStorage
+  document.getElementById("loginBtn").addEventListener("click", () => {
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
+
+    if(!email || !password) return alert("Please fill in all fields!");
+
+    // Fake login logic
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+    const user = users.find(u => u.email === email && u.password === password);
+    if(user) {
+      alert("Login successful!");
+    } else {
+      alert("Invalid credentials. First register or check email/password.");
+    }
+  });
+
+  // Preload a dummy user for testing
+  const users = JSON.parse(localStorage.getItem("users")) || [];
+  if(!users.find(u => u.email === "test@pcea.com")) {
+    users.push({email: "test@pcea.com", password: "123456"});
+    localStorage.setItem("users", JSON.stringify(users));
+  }
+</script>
+
 </body>
-  </html>
+</html>
