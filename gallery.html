@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gallery - PCEA CENTER YOUTH</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+    body { background-color: #e6f0ff; color: #222; min-height: 100vh; display: flex; flex-direction: column; }
+    header { background-color: #3b82f6; color: white; padding: 1.2rem; text-align: center; font-size: 1.5rem; font-weight: bold; }
+    nav { background-color: #dce8ff; display: flex; justify-content: center; flex-wrap: wrap; padding: 0.6rem; }
+    nav a { color: #0b3c91; text-decoration: none; font-weight: 600; margin: 0.5rem 1rem; transition: color 0.3s; }
+    nav a:hover { color: #2563eb; }
+
+    main { flex: 1; padding: 2rem; text-align: center; }
+    h2 { color: #1d4ed8; margin-bottom: 1rem; }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      padding: 1rem;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    footer {
+      background-color: #3b82f6;
+      color: white;
+      text-align: center;
+      padding: 0.8rem;
+      font-size: 0.9rem;
+      margin-top: auto;
+    }
+  </style>
+</head>
+<body>
+  <header>PCEA CENTER YOUTH APP</header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="events.html">Events</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="announcements.html">Announcements</a>
+    <a href="donations.html">Donations</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <main>
+    <h2>Our Fellowship Gallery</h2>
+    <p>Memories from past PCEA Center Youth events and moments together.</p>
+
+    <div class="gallery">
+      <img src="https://source.unsplash.com/featured/?church" alt="Church event" />
+      <img src="https://source.unsplash.com/featured/?youth" alt="Youth fellowship" />
+      <img src="https://source.unsplash.com/featured/?worship" alt="Worship" />
+      <img src="https://source.unsplash.com/featured/?community" alt="Community service" />
+      <img src="https://source.unsplash.com/featured/?teamwork" alt="Team" />
+      <img src="https://source.unsplash.com/featured/?choir" alt="Choir" />
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 PCEA Center Youth Fellowship | Built by Ian Gathagu
+  </footer>
+</body>
+  </html>
