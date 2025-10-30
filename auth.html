@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login / Register</title>
+  <style>
+    body {
+      background-color: #add8e6;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    input {
+      margin: 5px;
+      padding: 8px;
+      width: 250px;
+    }
+    button {
+      margin: 5px;
+      padding: 8px 15px;
+      background-color: #004080;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Login / Register</h2>
+  <input id="username" type="text" placeholder="Enter username"><br>
+  <input id="password" type="password" placeholder="Enter password"><br>
+  <button onclick="register()">Register</button>
+  <button onclick="login()">Login</button>
+  <p id="msg"></p>
+
+  <script>
+    function register() {
+      const u = document.getElementById('username').value;
+      const p = document.getElementById('password').value;
+      if (!u || !p) return alert('Fill all fields!');
+      localStorage.setItem('user_' + u, p);
+      document.getElementById('msg').innerText = 'Registered successfully ✅';
+    }
+
+    function login() {
+      const u = document.getElementById('username').value;
+      const p = document.getElementById('password').value;
+      const saved = localStorage.getItem('user_' + u);
+      if (saved === p) {
+        localStorage.setItem('loggedInUser', u);
+        window.location.href = 'index.html';
+      } else {
+        document.getElementById('msg').innerText = 'Invalid credentials ❌';
+      }
+    }
+  </script>
+</body>
+</html>
