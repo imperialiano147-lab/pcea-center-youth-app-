@@ -1,0 +1,26 @@
+<h2>Ethan AI</h2>
+<input type="text" id="ethanInput" placeholder="Ask Ethan..." />
+<button onclick="askEthan()">Send</button>
+<div id="ethanResponse"></div>
+
+<script>
+const ETHAN_API = 'YOUR_ETHAN_API_ENDPOINT'; // SpiritBridge or Ethan AI endpoint
+const ETHAN_KEY = 'YOUR_ETHAN_API_KEY';
+
+async function askEthan() {
+    const question = document.getElementById('ethanInput').value;
+    if(!question) return alert('Ask something!');
+
+    const res = await fetch(ETHAN_API, {
+        method: 'POST',
+        headers: {
+            'Content-Type':'application/json',
+            'Authorization':'Bearer ' + ETHAN_KEY
+        },
+        body: JSON.stringify({prompt: question})
+    });
+
+    const data = await res.json();
+    document.getElementById('ethanResponse').textContent = data.answer;
+}
+</script>
